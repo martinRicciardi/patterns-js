@@ -28,4 +28,4 @@ console.log(new Logs("hello4"))
 //la clase lee si ya hay una instancia de logueo, si no la hay la crea
 //si ya existe entra al mismo espacio de memoria y retorna la misma, mejora la velocidad de la pagina
 
-//RESUMIDO: un patron que mejora la velocidad y optimizacion de la aplicacion
+//RESUMIDO: un patron que mejora la velocidad y optimizacion de la aplicacion mejorando el uso de memoria

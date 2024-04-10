@@ -1,0 +1,4 @@
+cosas que buscar:
+buscar los metodos desconocidos en los patrones creacionales
+recursividad
+abstraccion

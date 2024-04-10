@@ -1,0 +1,57 @@
+en los ultimos patrones utilizabamos la composicion
+por un lado teniamos teniamos la implementacion original 
+que teniamos que ampliar en algun sentido, para eso el cliente 
+no trabajaba con el objeto original, si no con un elemento
+nuevo que introducia el patron, este nuevo elemento tenia
+una referencia al objeto original y incorporaba
+de forma flexible la funcionalidad requerida por el patron a la 
+funcionalidad de la implementacion original.
+
+                     -----> interfaz <----
+                     |                   |
+                     |                   |
+CLIENTE --------> Patron ---------> IMPLEMENTACION
+
+Esto se aplico por ejemplo en el patron decorator y proxy, en ambos casos
+el cliente no tenia que saber que no estaba trabajando con el objeto original
+ya que el patron presentaba la misma interfaz que la implementacion original
+
+decorator: añadir funcionalidad
+proxy: controlar acceso
+
+la estructura es la misma para los dos patrones, entonces por que tenemos dos 
+patrones y no uno solo? el motivo es que cada uno se caracteriza por el problema
+que resuelve, no por la estructura de implementacion
+
+Otra aplicacion de esta estructura de composicion este en el adapter pero en este 
+caso el objetivo era ofrecer otra interfaz al cliente
+
+                interfaz             interfaz
+                   |                    |
+                   |                    |
+CLIENTE -------> Patron --------> IMPLEMENTACION
+
+Un caso que no respeta exactamente la estructura pero tiene cierta similitud
+es el facade. En este caso el patron tiene referencias a multiples implementaciones
+para ofrecer una interfaz mas sencilla al cliente
+
+facade: caso particular: simplificar interface
+
+                interfaz
+                   |
+CLIENTE -------> Patron -------> IMPLEMENTACION ----> interfaz
+                        |------> IMPLEMENTACION ----> interfaz
+                        |------> IMPLEMENTACION ----> interfaz
+
+
+Estas estructuras que recursivamente aparece en los patrones se llama composicion
+La composicion es una estrategia para ampliar funcionalidad de un tipo que consiste
+en crear un nuevo tipo con una referencia al tipo existente y utilizarlo precisamente
+para ampliar la funcionalidad original.
+La alternativa a esta estrategia es la herencia, crear un nuevo tipo que extienda el original
+y amplie la funcionalidadsegun lo requiere
+
+Los autores de los patrones favorecen la composicion sobre la herencia aunque la herencia
+implique escribir menos codigo que la composicion, suele ser una solucion menos indicada
+en terminos como la complejidad, la mantenibilidad y la flexibilidad, por lo tanto, los patrones 
+nos enseñan esta leccion, usar la composicion sobre o preferentemente a la herencia. 
