@@ -1,4 +1,56 @@
-cosas que buscar:
-buscar los metodos desconocidos en los patrones creacionales
-recursividad
-abstraccion
+PROGRAMACION ORIENTADA A OBJETOS:
+En los ejemplos se utiliza funciones constructoras, donde la herencia se basa en prototipos, de esta manera era la "programacion orientada a objetos" hasta que aparecieron las clases. 
+Internamente, las clases en JavaScript también utilizan prototipos, pero la sintaxis de la clase oculta la complejidad de los prototipos. De esta manera con la sintaxis de las clases, 
+javascript tiene una manera mas legible de instanciar objetos como en los lenguajes que son mas utilizados en poo.
+
+Encapsulacion: La encapsulación contiene toda la información importante de un objeto dentro del mismo y solo expone la información seleccionada al mundo exterior. 
+Esta propiedad permite asegurar que la información de un objeto esté oculta para el mundo exterior, agrupando en una Clase las características o atributos que cuentan 
+con un acceso privado, y los comportamientos o métodos que presentan un acceso público.
+Usamos de ejemplo un coche para explicar la encapsulación. El coche comparte información pública a través de las luces de freno o intermitentes para indicar los giros 
+(interfaz pública). Por el contrario, tenemos la interfaz interna, que sería el mecanismo propulsor del coche, que está oculto bajo el capó. Cuando se conduce un automóvil 
+es necesario indicar a otros conductores tus movimientos, pero no exponer datos privados sobre el tipo de carburante o la temperatura del motor, ya que son muchos datos, 
+lo que confundiría al resto de conductores.
+
+Abstraccion: La abstracción es cuando el usuario interactúa solo con los atributos y métodos seleccionados de un objeto, utilizando herramientas simplificadas de alto nivel 
+para acceder a un objeto complejo. El concepto de abstracción facilita el mantenimiento de un código de gran tamaño, donde a lo largo del tiempo pueden surgir diferentes cambios.
+Así, la abstracción se basa en usar cosas simples para representar la complejidad. Los objetos y las clases representan código subyacente, ocultando los detalles complejos al usuario. 
+Por consiguiente, supone una extensión de la encapsulación. Siguiendo con el ejemplo del coche, no es necesario que conozcas todos los detalles de cómo funciona el motor para poder conducirlo.
+
+Herencia: La herencia define relaciones jerárquicas entre clases, de forma que atributos y métodos comunes puedan ser reutilizados. Las clases principales extienden atributos y comportamientos 
+a las clases secundarias. A través de la definición en una clase de los atributos y comportamientos básicos, se pueden crear clases secundarias, ampliando así la funcionalidad de la clase principal 
+y agregando atributos y comportamientos adicionales.
+
+Polimorfismo: El polimorfismo consiste en diseñar objetos para compartir comportamientos, lo que nos permite procesar objetos de diferentes maneras. Es la capacidad de presentar la misma interfaz 
+para diferentes formas subyacentes o tipos de datos. Al utilizar la herencia, los objetos pueden anular los comportamientos principales compartidos, con comportamientos secundarios específicos. 
+El polimorfismo permite que el mismo método ejecute diferentes comportamientos de dos formas: anulación de método y sobrecarga de método.
+El polimorfismo es lo que nos permite usar ambas clases de forma indistinta, ya que soportan el mismo “interfaz”. (Hablando de un interfaz padre y dos clases hijas que al instanciarlas se tratan 
+individualmente ya sea el padre o las hijas, superclases y subclases en js).
+
+POO en JS, lenguaje de prototipos:
+Para entender la cadena de prototipos podemos hacer alusión al ADN. JavaScript sólo tiene una estructura: objetos. Cada objeto tiene una propiedad privada (referida como su [[Prototype]]) que 
+mantiene un enlace a otro objeto llamado su prototipo. Ese objeto prototipo tiene su propio prototipo, y así sucesivamente hasta que se alcanza un objeto cuyo prototipo es null. Por definición, 
+null no tiene prototipo, y actúa como el enlace final de esta cadena de prototipos. Entonces en JavaScript tenemos el objeto global Object y la propiedad Object.prototype representa al objeto 
+prototipo de Object, donde todos los objetos vienen de Object donde heredan las propiedades de Object.prototype. Si imprimimos en consola Object.prototype, String.prototype, Array.prototype, 
+podemos observar que tienen sus propios métodos y propiedades.
+Por ejemplo, creamos un array y hacemos un .push(), es un prototipo del array, al llamar al metodo, busca dentro del prototipo y una vez encontrado es utilizado.
+Al fin y al cabo, utilizando las clases, constructores y superclases en js, es "lo mismo" que cualquier otro lenguaje.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Recursividad: La recursividad consiste en funciones que se llaman a sí mismas, evitando el uso de bucles y otros iteradores.
+
+function factorial(n) {
+    if (n<=1) return 1;
+    return n* factorial(n-1);
+}
+cuando llamamos a la primera función, ésta se llama a sí misma pero pasándole un número menos y así sucesivamente hasta llegar a la última (la que recibe un 1 y por 
+lo tanto deja de hacer más llamadas). En el momento en el que alguna de ellas empieza a devolver valores "hacia atrás", regresa la llamada a cada una de ellas, los 
+valores devueltos se van multiplicando por el parámetro original en cada una de ellas, hasta llegar arriba del todo en el que la primera llamada devuelve el valor buscado.
+
+El ejemplo típico sería el recorrer un árbol de elementos para hacer algo con todos ellos. Imagínate un sistema de archivos con carpetas y subcarpetas y archivos dentro de 
+estas carpetas, o el árbol de elementos (DOM) de una página web donde unos elementos incluyen a su vez otros y no sabes cuántos hay en cada uno. En este tipo de situaciones 
+la manera más eficiente de hacer una función que recorra todos los elementos es mediante recursión. Es decir, creas una función que recorra todos los elementos hijo del nodo 
+que le pases y que se llame a sí misma para hacer lo mismo con los sub-nodos que haya. En el caso del sistema de archivos le pasarías una carpeta y se llamaría a sí misma por 
+cada subcarpeta que hubiese, y así sucesivamente con todas las demás. Con una sola llamada inicial recorrerá automáticamente toda la estructura del sistema de archivos.
+Con eso, y sin necesidad de complicarte, de repente tienes una función muy poderosa capaz de enumerar cualquier estructura arbitraria por compleja que sea.
+Ahí es donde se ve el verdadero poder de la recursividad, aunque hay aplicaciones más potentes y más complejas todavía.
